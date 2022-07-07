@@ -1,34 +1,36 @@
-import React, { useEffect } from "react";
 import Card from "./Card";
-import { useState } from "react";
-
-const firstImg = <img src="/images/1.png" alt=" " />
-const seconImg = <img src="/images/2.png" alt=" " />
-const thirdImg = <img src="/images/3.png" alt=" " />
-const fourthImg = <img src="/images/4.png" alt=" " />
-
-
-
+import { useEffect, useState } from "react";
 
 function Board() {
 
-    const imgUrls = [firstImg, seconImg, thirdImg, fourthImg];
+    const imgUrls = [];
+
+    (function imgPopulater() {
+        for (let i = 1; i < 13; i++){
+            const img = <img src={`/images/${i}.png`} alt=" " />
+            imgUrls.push(img);
+        }
+        console.log(imgUrls);
+    })()
     
     const [images, setImages] = useState(imgUrls);
 
     const handleImgChange = () => {
-        const shuffleArray = imgUrls.sort((a, b) => 0.5 - Math.random());
-        console.log(shuffleArray)
+        const tempImgs = [...images];
+        const shuffleArray = tempImgs.sort((a, b) => 0.5 - Math.random());
         setImages(shuffleArray);
-    }
+        console.log('re-rener!')
+    } 
 
-    
+    useEffect(() => {
+       console.log('use effect is here')
+    }, [])
 
   return (
     <div className="board">
           <Card
               images={images}
-              shuffleCards={ handleImgChange} />
+              shuffleCards={ handleImgChange } />
     </div>
   );
 }
@@ -36,12 +38,3 @@ function Board() {
 export default Board;
 
 
-// const imgUrls = [];
-
-//     function imgPopulater() {
-//         for (let i = 1; i < 5; i++){
-//             const img = <img src={`/images/${i}.png`} alt=" " />
-//             imgUrls.push(img);
-//         }
-//         console.log(imgUrls);
-//     }
