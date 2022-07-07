@@ -15,6 +15,10 @@ function Board() {
     
     const [images, setImages] = useState(imgUrls);
 
+    const [score, setScore] = useState(0);
+
+    const [bestScore, setBestScore] = useState(0);
+
     const handleImgChange = () => {
         const tempImgs = [...images];
         const shuffleArray = tempImgs.sort((a, b) => 0.5 - Math.random());
@@ -23,14 +27,24 @@ function Board() {
     } 
 
     useEffect(() => {
-       console.log('use effect is here')
+        console.log('component did mount');
+        handleImgChange();
     }, [])
 
   return (
-    <div className="board">
-          <Card
+      <div className="board">
+          <div className="score">
+              {`Score: ` + score}
+          </div>
+          <div className="bestScore">
+              {`Best score: ` + bestScore}
+          </div>
+          <div className="cards">
+              <Card
               images={images}
-              shuffleCards={ handleImgChange } />
+              shuffleCards={handleImgChange} />
+          </div>
+          
     </div>
   );
 }
