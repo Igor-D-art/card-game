@@ -4,21 +4,21 @@ import React from "react";
 function Card (props) {
 
     return (
-        props.images.map((image) => {
-            const i = props.images.indexOf(image);
-            return (
-                <ul key={i}>
-                    <li>
-                        <div className="card" onClick={props.shuffleCards}>
-                            <div className="image">
-                                {props.images[i]}
+        <ul>
+            {props.cards.map((card) => {
+                const i = props.cards.indexOf(card);
+                return (
+                    
+                        <li key={i}>
+                            <div id={i} className="card" onClick={props.shuffleCards}>
+                                <img id={i} src={props.cards[i].link} alt=""/>
                             </div>
-                        </div>
-                    </li>
-              </ul>
-          )
-      })
-  );
+                        </li>
+                
+                )
+            })}
+      </ul>
+    );
 }
 
 export default Card;

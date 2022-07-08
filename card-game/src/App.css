@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -38,17 +40,47 @@
 }
 
 img{
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 130px;
 }
 
 .cards{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-
+  display: flex;
+  justify-content: center;
 }
 
 ul{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   list-style-type: none;
+
+}
+
+li{
+  width: fit-content;
+  margin: 10px 100px 10px 100px;
+}
+
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: sticky;
+  height: 50px;
+  background-color: green;
+}
+
+header>h1{
+  color: white;
+}
+
+.scores{
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.card{
+  width: fit-content;
 }
